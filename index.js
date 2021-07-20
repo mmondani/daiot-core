@@ -5,7 +5,7 @@ var app = express();
 const mqttHandler = require('./mqtt/mqttHandler.js');
 const apiConf = require("./config/api.config.js");
 const tiqConf = require("./config/tiq.config.js");
-const rpc = require("./rpc/toRpc.js");
+const rpc = require("./rpc/rpc.js");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))

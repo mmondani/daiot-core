@@ -1,6 +1,6 @@
 const mqtt = require('mqtt');
-const out = require('../tiq/toApi.js');
-const rpc = require('../rpc/toRpc.js');
+const out = require('../tiq/tiq.js');
+const rpc = require('../rpc/rpc.js');
 const mqttConf = require('../config/mqtt.config.js');
 
 

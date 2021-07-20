@@ -1,7 +1,7 @@
 const mqttHandler = require('../mqtt/mqttHandler.js');
 const mqttConf = require('../config/mqtt.config.js');
 const apiConf = require('../config/api.config.js');
-const out = require('../tiq/toApi.js');
+const out = require('../tiq/tiq.js');
 
 exports.toRpc = (req,res) => {
     mqttHandler.sendMessage(mqttConf.commandTopic,req.body.message);
