@@ -5,5 +5,6 @@ const apiConf = {
     commandRoute: '/command',
     telemetryRoute: '/telemetry',
     attributeRoute: '/atttribute',
+    actionRoute: '/action'
 }
 module.exports = apiConf;

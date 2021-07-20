@@ -17,7 +17,7 @@ const mqttConf = require('../config/mqtt.config.js');
 
     // Connection callback
     mqttClient.on('connect', () => {
-      console.log(`Conectado a borker`);
+      console.log(`Conectado a broker`);
     });
 
     // mqtt subscriptions
@@ -34,9 +34,9 @@ const mqttConf = require('../config/mqtt.config.js');
   }
 
   // Sends a mqtt message to topic: mytopic
-  exports.sendMessage = (message) => {
+  exports.sendMessage = (topic, message) => {
     //rpc.toRpc();
-    mqttClient.publish(mqttConf.commandTopic, message);
+    mqttClient.publish(topic, message);
   }
 
 
