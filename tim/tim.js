@@ -9,9 +9,10 @@ const configAxios = {
 
 
 exports.toApi = (topic, message) => {
-  //console.log('topico:',topic);
-  //console.log('mensaje:',message.toString());
   if (topic==mqttConf.telemetryTopic){
+    console.log("Telemetry to API");
+    console.log("Route:",apiConf.telemetryRoute);
+    console.log("Message:",message.toString());
     put('http://'+apiConf.url+':'+apiConf.port+apiConf.telemetryRoute, message.toString(),configAxios);
   }
   if (topic==mqttConf.attributeTopic){
@@ -19,28 +20,35 @@ exports.toApi = (topic, message) => {
   }
   if (topic==mqttConf.commandTopic){
     configAxios.headers.Authorization=message.token;
-    //console.log('toApi:',apiConf.actionRoute,message);
+    console.log("Command to API");
+    console.log("Route:",apiConf.actionRoute);
+    console.log("Message:",message);
     post('http://'+apiConf.url+':'+apiConf.port+apiConf.actionRoute, message,configAxios);
+    
   }
 }  
 
 async function put(url, body, configAxios) {
     try {
-        const response = await axios.put(url, body, configAxios);
-        return response.data;
+      const response = await axios.put(url, body, configAxios);
+      console.log("API response",response.data);
+      return response.data;
     } 
     catch (err) {
-        return (err);
+      console.log("Error", err);
+      return (err);
     }
 }
 
 async function post(url, body, configAxios) {
   try {
-      const response = await axios.post(url, body, configAxios);
-      return response.data;
+    const response = await axios.post(url, body, configAxios);
+    console.log("API response",response.data);
+    return response.data;
   } 
   catch (err) {
-      return (err);
+    console.log("Error", err);
+    return (err);
   }
 }
 
