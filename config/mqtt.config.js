@@ -5,7 +5,7 @@ const mqttConf = {
     username: '',
     password: '',
     commandTopic: 'device/command',
-    attributeTopic: 'device/atttribute',
+    attributeTopic: 'device/attribute',
     telemetryTopic: 'device/telemetry',
     key: fs.readFileSync('./certs/client.key'),
     cert: fs.readFileSync('./certs/client.crt'),

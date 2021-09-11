@@ -1,7 +1,7 @@
 {
-  "name": "tim",
+  "name": "Core",
   "version": "1.0.0",
-  "description": "Telemetry Input Management",
+  "description": "Telemetry Input Management & Remote Procedure Call",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

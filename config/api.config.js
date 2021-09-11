@@ -4,7 +4,13 @@ const apiConf = {
     method: 'PUT',
     commandRoute: '/command',
     telemetryRoute: '/telemetry',
-    attributeRoute: '/atttribute',
+    attributeRoute: '/attribute',
     actionRoute: '/action'
 }
+/*const configAxios = { 
+    headers: {
+      'Content-Type': 'application/json'
+      } 
+    }*/
+
 module.exports = apiConf;

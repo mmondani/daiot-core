@@ -7,27 +7,28 @@ const configAxios = {
     } 
   }
 
-
-exports.toApi = (topic, message) => {
+//--Process telemetry and attribute arrived from broker
+exports.timProc = (topic, message) => {
   if (topic==mqttConf.telemetryTopic){
     console.log("Telemetry to API");
     console.log("Route:",apiConf.telemetryRoute);
     console.log("Message:",message.toString());
+
+    //--Send telemetry data to API for persistence
     put('http://'+apiConf.url+':'+apiConf.port+apiConf.telemetryRoute, message.toString(),configAxios);
   }
   if (topic==mqttConf.attributeTopic){
-    put('http://'+apiConf.url+':'+apiConf.port+apiConf.attributeRoute, message.toString(),configAxios);
-  }
-  if (topic==mqttConf.commandTopic){
-    configAxios.headers.Authorization=message.token;
-    console.log("Command to API");
-    console.log("Route:",apiConf.actionRoute);
-    console.log("Message:",message);
-    post('http://'+apiConf.url+':'+apiConf.port+apiConf.actionRoute, message,configAxios);
+    console.log("Attribute to API");
+    console.log("Route:",apiConf.attributeRoute);
+    console.log("Message:",message.toString());
     
+    //--Send attribute data to API for persistence
+    //--TODO in API
+    //put('http://'+apiConf.url+':'+apiConf.port+apiConf.attributeRoute, message.toString(),configAxios);
   }
 }  
 
+//--Put data to API
 async function put(url, body, configAxios) {
     try {
       const response = await axios.put(url, body, configAxios);
@@ -40,6 +41,7 @@ async function put(url, body, configAxios) {
     }
 }
 
+//--POST data to API
 async function post(url, body, configAxios) {
   try {
     const response = await axios.post(url, body, configAxios);

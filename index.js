@@ -10,14 +10,18 @@ const rpc = require("./rpc/rpc.js");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//--Conecta al broker
+//--Connect to broker
 mqttHandler.connect();
 
-// Ruta para recepción (http) y envío de comandos RPC (mqtt)
+// Ruta de recepción (http) y envío de comandos RPC (mqtt)
 app.post(apiConf.commandRoute, function(req, res) {
-  rpc.toRpc(req,res);
+  rpc.RpcComm(req,res);
 });
 
+// Ruta de recepción (http) y envío de atributos RPC (mqtt)
+app.post(apiConf.attributeRoute, function(req, res) {
+  rpc.RpcAtt(req,res);
+})
 
 //--Inicio del servicio core
 var server = app.listen(tiqConf.port, function () {

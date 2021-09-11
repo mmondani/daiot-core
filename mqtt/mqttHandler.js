@@ -1,6 +1,6 @@
 const mqtt = require('mqtt');
-const out = require('../tim/tim.js');
-const rpc = require('../rpc/rpc.js');
+const tim = require('../tim/tim.js');
+//const rpc = require('../rpc/rpc.js');
 const mqttConf = require('../config/mqtt.config.js');
 
 
@@ -23,8 +23,8 @@ const mqttConf = require('../config/mqtt.config.js');
     mqttClient.subscribe(mqttConf.telemetryTopic, {qos: 0});
     mqttClient.subscribe(mqttConf.attributeTopic, {qos: 0});
 
-    // When a message arrives, send to API
-    mqttClient.on('message', out.toApi);
+    // When a message arrives, send to TIM
+    mqttClient.on('message', tim.timProc);
 
 
     mqttClient.on('close', () => {
