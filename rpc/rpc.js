@@ -38,7 +38,7 @@ exports.RpcComm = (req,res) => {
       put('http://'+apiConf.url+':'+apiConf.port+apiConf.actionRoute, actionData,configAxios);
   }
   else{
-    //--If no mqtt connection
+    //--No mqtt connection
     res.status(200).send("Commnad not sent. MQTT disconnected "+req.body.message);
     console.log("Commnad not sent. MQTT disconnected")
   }
