@@ -13,17 +13,17 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //--Connect to broker
 mqttHandler.connect();
 
-// Ruta de recepción (http) y envío de comandos RPC (mqtt)
+//--Receive commands route from UI (http) and send to RPC (mqtt)
 app.post(apiConf.commandRoute, function(req, res) {
   rpc.RpcComm(req,res);
 });
 
-// Ruta de recepción (http) y envío de atributos RPC (mqtt)
+//--Receive attributes route from UI (http) and send to RPC (mqtt)
 app.post(apiConf.attributeRoute, function(req, res) {
   rpc.RpcAtt(req,res);
-})
+});
 
-//--Inicio del servicio core
+//--Start Core service
 var server = app.listen(tiqConf.port, function () {
-    console.log("Servicio Core corriendo en puerto.", server.address().port);
+    console.log("Core service running on port:", server.address().port);
 });

@@ -1,6 +1,5 @@
 const mqtt = require('mqtt');
 const tim = require('../tim/tim.js');
-//const rpc = require('../rpc/rpc.js');
 const mqttConf = require('../config/mqtt.config.js');
 
 
@@ -11,12 +10,11 @@ const mqttConf = require('../config/mqtt.config.js');
     // Mqtt error calback
     mqttClient.on('error', (err) => {
       console.log(err);
-      this.mqttClient.end();
     });
 
     // Connection callback
     mqttClient.on('connect', () => {
-      console.log(`Conectado a broker`);
+      console.log(`Connected to broker`);
     });
 
     // mqtt subscriptions
@@ -28,12 +26,17 @@ const mqttConf = require('../config/mqtt.config.js');
 
 
     mqttClient.on('close', () => {
-      console.log(`Cliente mqtt desconectado`);
+      console.log('Close event. Client MQTT disconnected');
     });
   }
 
   // Sends a mqtt message to topic
   exports.sendMessage = (topic, message) => {
-    //rpc.toRpc();
-    mqttClient.publish(topic, message);
+    if (mqttClient.connected==true){
+      mqttClient.publish(topic, message);
+      return true;
+    }else{
+      console.log('Publish fail. No connection to MQTT');
+      return false;
+    }
   }

@@ -7,10 +7,6 @@ const apiConf = {
     attributeRoute: '/attribute',
     actionRoute: '/action'
 }
-/*const configAxios = { 
-    headers: {
-      'Content-Type': 'application/json'
-      } 
-    }*/
+
 
 module.exports = apiConf;

@@ -1,5 +1,5 @@
 {
-  "name": "Core",
+  "name": "core",
   "version": "1.0.0",
   "description": "Telemetry Input Management & Remote Procedure Call",
   "main": "index.js",
