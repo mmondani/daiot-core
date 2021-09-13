@@ -8,5 +8,4 @@ const apiConf = {
     actionRoute: '/action'
 }
 
-
 module.exports = apiConf;

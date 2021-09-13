@@ -12,4 +12,5 @@ const mqttConf = {
     cert: fs.readFileSync('./certs/client.crt'),
     ca: fs.readFileSync('./certs/ca.crt'),
 }
+
 module.exports = mqttConf;

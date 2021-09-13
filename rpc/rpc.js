@@ -8,7 +8,7 @@ const configAxios = {
       } 
 }
 
-//--Commands from POST route /command
+//--Commands from POST route/command
 exports.RpcComm = (req,res) => {
     //--Send message to broker
     rc=mqttHandler.sendMessage(mqttConf.commandTopic,req.body.message);
