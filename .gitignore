@@ -280,3 +280,8 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+
+# Certificados
+certs/*
+!certs/.keep

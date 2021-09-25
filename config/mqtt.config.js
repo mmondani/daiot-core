@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const mqttConf = {
-    host: 'mqtts://192.168.1.42',
+    host: 'mqtts://mosquitto',
     username: '',
     password: '',
     reconnectPeriod: 2000,

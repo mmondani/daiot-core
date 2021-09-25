@@ -1,5 +1,5 @@
 const apiConf = {
-    url: '192.168.1.42',
+    url: 'api',
     port: 3000,
     method: 'PUT',
     commandRoute: '/command',
