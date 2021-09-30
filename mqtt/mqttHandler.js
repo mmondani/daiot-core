@@ -20,6 +20,8 @@ const mqttConf = require('../config/mqtt.config.js');
     // mqtt subscriptions
     mqttClient.subscribe(mqttConf.telemetryTopic, {qos: 0});
     mqttClient.subscribe(mqttConf.attributeTopic, {qos: 0});
+    mqttClient.subscribe(mqttConf.actionTopic, {qos: 0});
+    mqttClient.subscribe(mqttConf.statusTopic, {qos: 0});
 
     // When a message arrives, send to TIM
     mqttClient.on('message', tim.timProc);

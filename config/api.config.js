@@ -5,7 +5,9 @@ const apiConf = {
     commandRoute: '/command',
     telemetryRoute: '/telemetry',
     attributeRoute: '/attribute',
-    actionRoute: '/action'
+    actionRoute: '/action',
+    canalRoute: '/dispo/canal',
+    statusRoute: '/dispo/status'
 }
 
 module.exports = apiConf;
