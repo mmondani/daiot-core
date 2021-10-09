@@ -7,7 +7,8 @@ const apiConf = {
     attributeRoute: '/attribute',
     actionRoute: '/action',
     canalRoute: '/dispo/canal',
-    statusRoute: '/dispo/status'
+    statusRoute: '/dispo/status',
+    ultimaTeleRoute: '/dispo/ultima-tele',
 }
 
 module.exports = apiConf;

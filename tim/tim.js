@@ -16,6 +16,7 @@ exports.timProc = (topic, message) => {
 
     //--Send telemetry data to API for persistence
     put('http://'+apiConf.url+':'+apiConf.port+apiConf.telemetryRoute, message.toString(),configAxios);
+    put('http://'+apiConf.url+':'+apiConf.port+apiConf.ultimaTeleRoute, message.toString(),configAxios);
   }
   else if (topic==mqttConf.attributeTopic){
     console.log("Attribute to API");
