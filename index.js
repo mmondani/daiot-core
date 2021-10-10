@@ -1,4 +1,6 @@
 var express = require("express");
+const cors = require('cors');
+
 var bodyParser = require("body-parser");
 var app = express();
 
@@ -9,6 +11,12 @@ const rpc = require("./rpc/rpc.js");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
+let corsOptions = {
+	origin: "*",
+	optionsSucessStatus: 200
+};
+app.use(cors(corsOptions));
 
 //--Connect to broker
 mqttHandler.connect();

@@ -11,18 +11,20 @@ const configAxios = {
 //--Commands from POST route/command
 exports.RpcComm = (req,res) => {
     //--Send message to broker
-    rc=mqttHandler.sendMessage(mqttConf.commandTopic,req.body.message);
+    console.log(JSON.stringify(req.body))
+    message=JSON.stringify(req.body)
+    rc=mqttHandler.sendMessage(mqttConf.commandTopic,message);
     if (rc==true){
       //--Response to UI
-      res.status(200).send("Command sent to broker: "+req.body.message);
-
+      res.status(200).send({"Command sent to broker": message});
+    
       //--log to console
       console.log("Command to broker");
       console.log('Topic:',mqttConf.commandTopic);
-      console.log("Mesage",req.body.message);
+      console.log("Mesage",message);
 
       //--Send action to API for persistence
-      actionParsed=JSON.parse(req.body.message);
+      actionParsed=JSON.parse(message);
       const actionData={
           "dispositivo":actionParsed.Device,
           "usuario":actionParsed.usuario,
